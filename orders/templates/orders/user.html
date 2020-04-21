@@ -2,8 +2,24 @@
 
 {% block body %}
 <h1>Hello, {{ user.first_name }}</h1>
-<ul>
-    <li>Currently logged in as: {{ user.username }}</li>
-    <li><a href="{% url 'logout' %}">Logout</a></li>
-</ul>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm">
+      <h3><a href="{% url 'pizzaMenu' %}">Pizza</a></h3>
+    </div>
+    <div class="col-sm">
+      <h3><a href="{% url 'subMenu' %}">Subs</a></h3>
+    </div>
+    <div class="col-sm">
+      <h3><a href="{% url 'pastaMenu' %}">Pasta</a></h3>
+    </div>
+    <div class="col-sm">
+      <h3><a href="{% url 'saladMenu' %}">Salads</a></h3>
+    </div>
+    <div class="col-sm">
+      <h3><a href="{% url 'platterMenu' %}">Dinner Platters</a></h3>
+    </div>
+  </div>
+  </div>
+  {% block div %}{% endblock %}
 {% endblock %}

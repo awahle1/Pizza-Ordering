@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -26,3 +27,42 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return render(request, "orders/login.html", {"message": "Logged out."})
+
+def toSignUp_view(request):
+    return render(request, "orders/signup.html")
+
+def signUp_view(request):
+    username = request.POST["username"]
+    password = request.POST["password"]
+    email = request.POST["email"]
+    firstname = request.POST["firstName"]
+    lastname = request.POST["lastName"]
+    user = authenticate(request, username=username, password=password)
+    if user is None:
+        if username is not None and password is not None and email is not None and firstname is not None and lastname is not None:
+            newuser = User.objects.create_user(
+            username=username,
+            password=password,
+            email=email,
+            first_name=firstname,
+            last_name=lastname)
+            user = authenticate(request, username=username, password=password)
+            login(request, user)
+        return HttpResponseRedirect(reverse("index"))
+    else:
+        return render(request, "orders/signup.html", {"message": "Username already in use"})
+
+def pizzaMenu_view(request):
+    return render(request, "orders/pizza.html")
+
+def subMenu_view(request):
+    return render(request, "orders/subs.html")
+
+def pastaMenu_view(request):
+    return render(request, "orders/pasta.html")
+
+def saladMenu_view(request):
+    return render(request, "orders/salads.html")
+
+def platterMenu_view(request):
+    return render(request, "orders/platters.html")
