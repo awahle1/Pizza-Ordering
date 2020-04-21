@@ -1,4 +1,61 @@
 {% extends "orders/user.html" %}
 {% block div %}
-  <h1>Subs</h1>
+<div class="row" align="center">
+  <div class="col-1"></div>
+  <div class="col-sm" align="center" id="sicpizza">
+    <div class="card" style="width: 26rem;">
+    <img src="https://storcpdkenticomedia.blob.core.windows.net/media/recipemanagementsystem/media/recipe-media-files/recipes/retail/x17/18742-italian-sub-760x580.jpg?ext=.jpg" class="card-img-top" alt="Boopadi Bopadi">
+    <div class="card-body">
+      <h5 class="card-title">Subs</h5>
+      <form>
+        <label for="size">Size:</label><br>
+        <select class="size" name="size">
+          <option value="Small">Small</option>
+          <option value="Large">Large</option>
+        </select>
+        <br>
+        <label for="sub">Choose a sub:</label>
+        <select id="sub" name="sub">
+          <option value="Cheese">Cheese (SM $6.50, LG $7.95)</option>
+          <option value="Italian">Italian (SM $6.50, LG $7.95)</option>
+          <option value="Ham + Cheese">Ham + Cheese (SM $6.50, LG $7.95)</option>
+          <option value="Meatball">Meatball (SM $6.50, LG $7.95)</option>
+          <option value="Tuna">Tuna (SM $6.50, LG $7.95)</option>
+          <option value="Turkey">Turkey (SM $7.50, LG $8.50)</option>
+          <option value="Chicken Parmigiana">Chicken Parmigiana (SM $7.50, LG $8.50)</option>
+          <option value="Eggplant Parmigiana">Eggplant Parmigiana (SM $6.50, LG $7.95)</option>
+          <option value="Steak">Steak (SM $6.50, LG $7.95)</option>
+          <option value="Steak + Cheese">Steak + Cheese (SM $6.95, LG $8.50)</option>
+          <option value="Sausage, Peppers & Onions">Sausage, Peppers & Onions (SM $7.50, LG $8.50)</option>
+          <option value="Hamburger">Hamburger (SM $4.60, LG $6.95)</option>
+          <option value=Cheeseburger">Cheeseburger (SM $5.10, LG $7.45)</option>
+          <option value="Fried Chicken">Fried Chicken (SM $6.95, LG $8.50)</option>
+          <option value="Veggie">Veggie (SM $6.95, LG $8.50)</option>
+        </select><br>
+        <label for="mushrooms">Add Mushrooms: ($0.50)</label>
+        <select id="mushrooms" name="mushrooms">
+          <option value="No">No</option>
+          <option value="Yes">Yes</option>
+        </select><br>
+        <label for="greenpeppers">Add Green Peppers: ($0.50)</label>
+        <select id="greenpeppers" name="greenpeppers">
+          <option value="No">No</option>
+          <option value="Yes">Yes</option>
+        </select><br>
+        <label for="onions">Add Onions: ($0.50)</label>
+        <select id="onions" name="onions">
+          <option value="No">No</option>
+          <option value="Yes">Yes</option>
+        </select><br>
+        <label for="xtracheese">Add Extra Cheese: ($0.50)</label>
+        <select id="xtracheese" name="xtracheese">
+          <option value="No">No</option>
+          <option value="Yes">Yes</option>
+        </select><br>
+      </form>
+    </div>
+    </div>
+  </div>
+  <div class="col-1"></div>
+</div>
 {% endblock %}

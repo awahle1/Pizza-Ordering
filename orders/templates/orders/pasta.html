@@ -1,4 +1,23 @@
 {% extends "orders/user.html" %}
 {% block div %}
-  <h1>Pasta</h1>
+<div class="row" align="center">
+  <div class="col-1"></div>
+  <div class="col-sm" align="center" id="sicpizza">
+    <div class="card" style="width: 26rem;">
+    <img src="https://www.onceuponachef.com/images/2017/10/Sausage-Baked-Ziti-1-1200x880.jpg" class="card-img-top" alt="Boopadi Bopadi">
+    <div class="card-body">
+      <h5 class="card-title">Pasta</h5>
+      <form>
+        <label for="pasta">Choose your pasta:</label>
+        <select id="pasta" name="pasta">
+          <option value="Baked Ziti w/Mozzarella">Baked Ziti w/Mozzarella ($6.50)</option>
+          <option value="Baked Ziti w/Meatballs">Baked Ziti w/Meatballs ($8.75)</option>
+          <option value="Baked Ziti w/Chicken">Baked Ziti w/Chicken ($9.75)</option>
+        </select><br>
+      </form>
+    </div>
+    </div>
+  </div>
+  <div class="col-1"></div>
+</div>
 {% endblock %}
