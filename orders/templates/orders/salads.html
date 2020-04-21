@@ -1,4 +1,24 @@
 {% extends "orders/user.html" %}
 {% block div %}
-  <h1>Salads</h1>
+<div class="row" align="center">
+  <div class="col-1"></div>
+  <div class="col-sm" align="center" id="sicpizza">
+    <div class="card" style="width: 26rem;">
+    <img src="https://assets.kraftfoods.com/recipe_images/opendeploy/52490_640x428.jpg" class="card-img-top" alt="Boopadi Bopadi">
+    <div class="card-body">
+      <h5 class="card-title">Salads</h5>
+      <form>
+        <label for="salad">Choose your salad:</label>
+        <select id="salad" name="salad">
+          <option value="Garden Salad">Garden Salad ($6.25)</option>
+          <option value="Greek Salad">Greek Salad ($8.25)</option>
+          <option value="Antipasto">Antipasto ($8.25)</option>
+          <option value="Salad w/Tuna">Salad w/Tuna ($8.25)</option>
+        </select><br>
+      </form>
+    </div>
+    </div>
+  </div>
+  <div class="col-1"></div>
+</div>
 {% endblock %}

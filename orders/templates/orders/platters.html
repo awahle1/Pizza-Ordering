@@ -1,4 +1,31 @@
 {% extends "orders/user.html" %}
 {% block div %}
-  <h1>Dinner Platters</h1>
+<div class="row" align="center">
+  <div class="col-1"></div>
+  <div class="col-sm" align="center" id="sicpizza">
+    <div class="card" style="width: 26rem;">
+    <img src="https://storcpdkenticomedia.blob.core.windows.net/media/recipemanagementsystem/media/recipe-media-files/recipes/retail/x17/16556-marinated-antipasto-platter-760x580.jpg?ext=.jpg" class="card-img-top" alt="Boopadi Bopadi">
+    <div class="card-body">
+      <h5 class="card-title">Dinner Platters</h5>
+      <form>
+        <label for="size">Size:</label>
+        <select id="size" name="size">
+          <option value="small">Small</option>
+          <option value="large">Large</option>
+        </select><br>
+        <label for="platter">Choose a dinner platter:</label>
+        <select id="platter" name="platter">
+          <option value="Garden Salad">Garden Salad (SM $40.00, LG $65.00)</option>
+          <option value="Greek Salad">Greek Salad (SM $50.00, LG $75.00)</option>
+          <option value="Antipasto">Antipasto (SM $50.00, LG $75.00)</option>
+          <option value="Baked Ziti">Baked Ziti (SM $40.00, LG $65.00)</option>
+          <option value="Meatball Parm">Meatball Parm (SM $50.00, LG $75.00)</option>
+          <option value="Chicken Parm">Chicken Parm (SM $55.00, LG $85.00)</option>
+        </select><br>
+      </form>
+    </div>
+    </div>
+  </div>
+  <div class="col-1"></div>
+</div>
 {% endblock %}
