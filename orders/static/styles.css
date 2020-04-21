@@ -1,3 +1,17 @@
-.container-fluid{
+#navbar{
   background-color: red;
+  justify-content: center;
+}
+
+#regpizza{
+  padding-top: 30px;
+}
+
+#sicpizza{
+  padding-top: 30px;
+}
+
+.card-title{
+  padding-left: 50px;
+  padding-right: 50px;
 }

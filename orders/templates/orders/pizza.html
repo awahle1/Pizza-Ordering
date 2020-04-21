@@ -1,4 +1,270 @@
 {% extends "orders/user.html" %}
 {% block div %}
-  <h1>Pizza</h1>
+  <div class="row" align="center">
+    <div class="col-1"></div>
+    <div class="col-sm" align="center" id="sicpizza">
+      <div class="card" style="width: 26rem;">
+      <img src="https://www.conniespizza.com/wp-content/uploads/2016/05/Sicilian012-smaller.png" class="card-img-top" alt="Boopadi Bopadi">
+      <div class="card-body">
+        <h5 class="card-title">Sicilian Pizza</h5>
+        <form>
+          <label for="size">Size</label>
+          <select class="size" name="size">
+            <option value="Small">Small</option>
+            <option value="Large">Large</option>
+          </select>
+          <br>
+          <label for="topping1">Choose a topping: (SM $13.70, LG $19.95)</label>
+          <select id="topping1" name="topping1">
+            <option value="None">None</option>
+            <option value="Pepperoni">Pepperoni</option>
+            <option value="Sausage">Sausage</option>
+            <option value="Mushrooms">Mushrooms</option>
+            <option value="Onions">Onions</option>
+            <option value="Ham">Ham</option>
+            <option value="Canadian Bacon">Canadian Bacon</option>
+            <option value="Pineapple">Pineapple</option>
+            <option value="Eggplant">Eggplant</option>
+            <option value="Tomato & Basil">Tomato & Basil</option>
+            <option value="Green Peppers">Green Peppers</option>
+            <option value="Hamburger">Hamburger</option>
+            <option value="Spinach">Spinach</option>
+            <option value="Artichoke">Artichoke</option>
+            <option value="Buffalo Chicken">Buffalo Chicken</option>
+            <option value="Barbecue Chicken">Barbecue Chicken</option>
+            <option value="Anchovies">Anchovies</option>
+            <option value="Black Olives">Black Olives</option>
+            <option value="Fresh Garlic">Fresh Garlic</option>
+            <option value="Zucchini">Zucchini</option>
+          </select><br>
+          <label for="topping2">Add a second topping: (SM $15.20, $21.95)</label>
+          <select id="topping2" name="topping2">
+            <option value="None">None</option>
+            <option value="Pepperoni">Pepperoni</option>
+            <option value="Sausage">Sausage</option>
+            <option value="Mushrooms">Mushrooms</option>
+            <option value="Onions">Onions</option>
+            <option value="Ham">Ham</option>
+            <option value="Canadian Bacon">Canadian Bacon</option>
+            <option value="Pineapple">Pineapple</option>
+            <option value="Eggplant">Eggplant</option>
+            <option value="Tomato & Basil">Tomato & Basil</option>
+            <option value="Green Peppers">Green Peppers</option>
+            <option value="Hamburger">Hamburger</option>
+            <option value="Spinach">Spinach</option>
+            <option value="Artichoke">Artichoke</option>
+            <option value="Buffalo Chicken">Buffalo Chicken</option>
+            <option value="Barbecue Chicken">Barbecue Chicken</option>
+            <option value="Anchovies">Anchovies</option>
+            <option value="Black Olives">Black Olives</option>
+            <option value="Fresh Garlic">Fresh Garlic</option>
+            <option value="Zucchini">Zucchini</option>
+          </select><br>
+          <label for="topping3">Add a third topping: (SM $16.20, $23.95)</label>
+          <select id="topping3" name="topping3">
+            <option value="None">None</option>
+            <option value="Pepperoni">Pepperoni</option>
+            <option value="Sausage">Sausage</option>
+            <option value="Mushrooms">Mushrooms</option>
+            <option value="Onions">Onions</option>
+            <option value="Ham">Ham</option>
+            <option value="Canadian Bacon">Canadian Bacon</option>
+            <option value="Pineapple">Pineapple</option>
+            <option value="Eggplant">Eggplant</option>
+            <option value="Tomato & Basil">Tomato & Basil</option>
+            <option value="Green Peppers">Green Peppers</option>
+            <option value="Hamburger">Hamburger</option>
+            <option value="Spinach">Spinach</option>
+            <option value="Artichoke">Artichoke</option>
+            <option value="Buffalo Chicken">Buffalo Chicken</option>
+            <option value="Barbecue Chicken">Barbecue Chicken</option>
+            <option value="Anchovies">Anchovies</option>
+            <option value="Black Olives">Black Olives</option>
+            <option value="Fresh Garlic">Fresh Garlic</option>
+            <option value="Zucchini">Zucchini</option>
+          </select><br>
+          <label for="topping4">Add a fourth topping: (SM $17.75, $25.95)</label>
+          <select id="topping4" name="topping4">
+            <option value="None">None</option>
+            <option value="Pepperoni">Pepperoni</option>
+            <option value="Sausage">Sausage</option>
+            <option value="Mushrooms">Mushrooms</option>
+            <option value="Onions">Onions</option>
+            <option value="Ham">Ham</option>
+            <option value="Canadian Bacon">Canadian Bacon</option>
+            <option value="Pineapple">Pineapple</option>
+            <option value="Eggplant">Eggplant</option>
+            <option value="Tomato & Basil">Tomato & Basil</option>
+            <option value="Green Peppers">Green Peppers</option>
+            <option value="Hamburger">Hamburger</option>
+            <option value="Spinach">Spinach</option>
+            <option value="Artichoke">Artichoke</option>
+            <option value="Buffalo Chicken">Buffalo Chicken</option>
+            <option value="Barbecue Chicken">Barbecue Chicken</option>
+            <option value="Anchovies">Anchovies</option>
+            <option value="Black Olives">Black Olives</option>
+            <option value="Fresh Garlic">Fresh Garlic</option>
+            <option value="Zucchini">Zucchini</option>
+          </select><br>
+          <label for="topping5">Add a fifth topping: (SM $17.75, $25.95)</label>
+          <select id="topping5" name="topping5">
+            <option value="None">None</option>
+            <option value="Pepperoni">Pepperoni</option>
+            <option value="Sausage">Sausage</option>
+            <option value="Mushrooms">Mushrooms</option>
+            <option value="Onions">Onions</option>
+            <option value="Ham">Ham</option>
+            <option value="Canadian Bacon">Canadian Bacon</option>
+            <option value="Pineapple">Pineapple</option>
+            <option value="Eggplant">Eggplant</option>
+            <option value="Tomato & Basil">Tomato & Basil</option>
+            <option value="Green Peppers">Green Peppers</option>
+            <option value="Hamburger">Hamburger</option>
+            <option value="Spinach">Spinach</option>
+            <option value="Artichoke">Artichoke</option>
+            <option value="Buffalo Chicken">Buffalo Chicken</option>
+            <option value="Barbecue Chicken">Barbecue Chicken</option>
+            <option value="Anchovies">Anchovies</option>
+            <option value="Black Olives">Black Olives</option>
+            <option value="Fresh Garlic">Fresh Garlic</option>
+            <option value="Zucchini">Zucchini</option>
+          </select><br>
+        </form>
+      </div>
+      </div>
+    </div>
+    <div class="col-sm" align="center" id="regpizza">
+      <div class="card" style="width: 26rem;">
+      <img src="https://media-cdn.tripadvisor.com/media/photo-s/14/0f/5f/67/pepperoni-pizza.jpg" class="card-img-top" alt="Boopadi Bopadi">
+      <div class="card-body">
+        <h5 class="card-title">Regular Pizza</h5>
+        <form>
+          <label for="size">Size</label>
+          <select class="size" name="size">
+            <option value="Small">Small</option>
+            <option value="Large">Large</option>
+          </select>
+          <br>
+          <label for="topping1">Choose a topping: (SM $13.70, LG $19.95)</label>
+          <select id="topping1" name="topping1">
+            <option value="None">None</option>
+            <option value="Pepperoni">Pepperoni</option>
+            <option value="Sausage">Sausage</option>
+            <option value="Mushrooms">Mushrooms</option>
+            <option value="Onions">Onions</option>
+            <option value="Ham">Ham</option>
+            <option value="Canadian Bacon">Canadian Bacon</option>
+            <option value="Pineapple">Pineapple</option>
+            <option value="Eggplant">Eggplant</option>
+            <option value="Tomato & Basil">Tomato & Basil</option>
+            <option value="Green Peppers">Green Peppers</option>
+            <option value="Hamburger">Hamburger</option>
+            <option value="Spinach">Spinach</option>
+            <option value="Artichoke">Artichoke</option>
+            <option value="Buffalo Chicken">Buffalo Chicken</option>
+            <option value="Barbecue Chicken">Barbecue Chicken</option>
+            <option value="Anchovies">Anchovies</option>
+            <option value="Black Olives">Black Olives</option>
+            <option value="Fresh Garlic">Fresh Garlic</option>
+            <option value="Zucchini">Zucchini</option>
+          </select><br>
+          <label for="topping2">Add a second topping: (SM $15.20, $21.95)</label>
+          <select id="topping2" name="topping2">
+            <option value="None">None</option>
+            <option value="Pepperoni">Pepperoni</option>
+            <option value="Sausage">Sausage</option>
+            <option value="Mushrooms">Mushrooms</option>
+            <option value="Onions">Onions</option>
+            <option value="Ham">Ham</option>
+            <option value="Canadian Bacon">Canadian Bacon</option>
+            <option value="Pineapple">Pineapple</option>
+            <option value="Eggplant">Eggplant</option>
+            <option value="Tomato & Basil">Tomato & Basil</option>
+            <option value="Green Peppers">Green Peppers</option>
+            <option value="Hamburger">Hamburger</option>
+            <option value="Spinach">Spinach</option>
+            <option value="Artichoke">Artichoke</option>
+            <option value="Buffalo Chicken">Buffalo Chicken</option>
+            <option value="Barbecue Chicken">Barbecue Chicken</option>
+            <option value="Anchovies">Anchovies</option>
+            <option value="Black Olives">Black Olives</option>
+            <option value="Fresh Garlic">Fresh Garlic</option>
+            <option value="Zucchini">Zucchini</option>
+          </select><br>
+          <label for="topping3">Add a third topping: (SM $16.20, $23.95)</label>
+          <select id="topping3" name="topping3">
+            <option value="None">None</option>
+            <option value="Pepperoni">Pepperoni</option>
+            <option value="Sausage">Sausage</option>
+            <option value="Mushrooms">Mushrooms</option>
+            <option value="Onions">Onions</option>
+            <option value="Ham">Ham</option>
+            <option value="Canadian Bacon">Canadian Bacon</option>
+            <option value="Pineapple">Pineapple</option>
+            <option value="Eggplant">Eggplant</option>
+            <option value="Tomato & Basil">Tomato & Basil</option>
+            <option value="Green Peppers">Green Peppers</option>
+            <option value="Hamburger">Hamburger</option>
+            <option value="Spinach">Spinach</option>
+            <option value="Artichoke">Artichoke</option>
+            <option value="Buffalo Chicken">Buffalo Chicken</option>
+            <option value="Barbecue Chicken">Barbecue Chicken</option>
+            <option value="Anchovies">Anchovies</option>
+            <option value="Black Olives">Black Olives</option>
+            <option value="Fresh Garlic">Fresh Garlic</option>
+            <option value="Zucchini">Zucchini</option>
+          </select><br>
+          <label for="topping4">Add a fourth topping: (SM $17.75, $25.95)</label>
+          <select id="topping4" name="topping4">
+            <option value="None">None</option>
+            <option value="Pepperoni">Pepperoni</option>
+            <option value="Sausage">Sausage</option>
+            <option value="Mushrooms">Mushrooms</option>
+            <option value="Onions">Onions</option>
+            <option value="Ham">Ham</option>
+            <option value="Canadian Bacon">Canadian Bacon</option>
+            <option value="Pineapple">Pineapple</option>
+            <option value="Eggplant">Eggplant</option>
+            <option value="Tomato & Basil">Tomato & Basil</option>
+            <option value="Green Peppers">Green Peppers</option>
+            <option value="Hamburger">Hamburger</option>
+            <option value="Spinach">Spinach</option>
+            <option value="Artichoke">Artichoke</option>
+            <option value="Buffalo Chicken">Buffalo Chicken</option>
+            <option value="Barbecue Chicken">Barbecue Chicken</option>
+            <option value="Anchovies">Anchovies</option>
+            <option value="Black Olives">Black Olives</option>
+            <option value="Fresh Garlic">Fresh Garlic</option>
+            <option value="Zucchini">Zucchini</option>
+          </select><br>
+          <label for="topping5">Add a fifth topping: (SM $17.75, $25.95)</label>
+          <select id="topping5" name="topping5">
+            <option value="None">None</option>
+            <option value="Pepperoni">Pepperoni</option>
+            <option value="Sausage">Sausage</option>
+            <option value="Mushrooms">Mushrooms</option>
+            <option value="Onions">Onions</option>
+            <option value="Ham">Ham</option>
+            <option value="Canadian Bacon">Canadian Bacon</option>
+            <option value="Pineapple">Pineapple</option>
+            <option value="Eggplant">Eggplant</option>
+            <option value="Tomato & Basil">Tomato & Basil</option>
+            <option value="Green Peppers">Green Peppers</option>
+            <option value="Hamburger">Hamburger</option>
+            <option value="Spinach">Spinach</option>
+            <option value="Artichoke">Artichoke</option>
+            <option value="Buffalo Chicken">Buffalo Chicken</option>
+            <option value="Barbecue Chicken">Barbecue Chicken</option>
+            <option value="Anchovies">Anchovies</option>
+            <option value="Black Olives">Black Olives</option>
+            <option value="Fresh Garlic">Fresh Garlic</option>
+            <option value="Zucchini">Zucchini</option>
+          </select><br>
+        </form>
+      </div>
+      </div>
+    </div>
+    <div class="col-1"></div>
+  </div>
+
 {% endblock %}
