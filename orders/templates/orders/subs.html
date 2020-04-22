@@ -7,7 +7,8 @@
     <img src="https://storcpdkenticomedia.blob.core.windows.net/media/recipemanagementsystem/media/recipe-media-files/recipes/retail/x17/18742-italian-sub-760x580.jpg?ext=.jpg" class="card-img-top" alt="Boopadi Bopadi">
     <div class="card-body">
       <h5 class="card-title">Subs</h5>
-      <form>
+      <form action="{% url 'orderSub' %}" method="post">
+        {% csrf_token %}
         <label for="size">Size:</label><br>
         <select class="size" name="size">
           <option value="Small">Small</option>
@@ -52,6 +53,7 @@
           <option value="No">No</option>
           <option value="Yes">Yes</option>
         </select><br>
+        <input type="submit" name="submit" value="Add to Order">
       </form>
     </div>
     </div>

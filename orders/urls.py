@@ -15,8 +15,8 @@ urlpatterns = [
     path("platterMenu", views.platterMenu_view, name="platterMenu"),
     path("orderSicilian", views.orderSicilian_view, name="orderSicilian"),
     path("orderPizza", views.orderPizza_view, name="orderPizza"),
-#    path("orderSub", views.orderSub_view, name="orderSub"),
-#    path("orderPasta", views.orderPasta_view, name="orderPasta"),
-#    path("orderSalad", views.orderSalad_view, name="orderSalad"),
-#    path("orderPlatter", views.orderPlatter_view, name="orderPlatter"),
+    path("orderSub", views.orderSub_view, name="orderSub"),
+    path("orderPasta", views.orderPasta_view, name="orderPasta"),
+    path("orderSalad", views.orderSalad_view, name="orderSalad"),
+    path("orderPlatter", views.orderPlatter_view, name="orderPlatter"),
 ]

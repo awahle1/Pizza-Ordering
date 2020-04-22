@@ -84,6 +84,11 @@ class Sub(models.Model):
     ('Fried Chicken', 'Fried Chicken'),
     ('Veggie', 'Veggie'),
     )
+    size = models.CharField(
+    max_length = 5,
+    choices = [('Small', 'Small'), ('Large', 'Large')],
+    default = 'Small',
+    )
 
     sub = models.CharField(
     max_length = 30,
@@ -136,7 +141,7 @@ class Pasta(models.Model):
     ('Baked Ziti w/Chicken', 'Baked Ziti w/Chicken'),
     )
 
-    salad = models.CharField(
+    pasta = models.CharField(
     max_length = 25,
     choices=PASTAOPTIONS,
     default='Baked Ziti w/Mozzarella',
@@ -152,8 +157,14 @@ class DinnerPlatter(models.Model):
     ('Chicken Parm', 'Chicken Parm'),
     )
 
-    salad = models.CharField(
+    platter = models.CharField(
     max_length = 20,
     choices=PLATTEROPTIONS,
     default='Baked Ziti',
+    )
+
+    size = models.CharField(
+    max_length = 5,
+    choices = [('Small', 'Small'), ('Large', 'Large')],
+    default = 'Small',
     )
