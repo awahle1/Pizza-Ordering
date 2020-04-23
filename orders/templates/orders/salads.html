@@ -7,8 +7,7 @@
     <img src="https://assets.kraftfoods.com/recipe_images/opendeploy/52490_640x428.jpg" class="card-img-top" alt="Boopadi Bopadi">
     <div class="card-body">
       <h5 class="card-title">Salads</h5>
-      <form action="{% url 'orderSalad' %}" method="post">
-        {% csrf_token %}
+      <form>
         <label for="salad">Choose your salad:</label>
         <select id="salad" name="salad">
           <option value="Garden Salad">Garden Salad ($6.25)</option>
@@ -16,7 +15,6 @@
           <option value="Antipasto">Antipasto ($8.25)</option>
           <option value="Salad w/Tuna">Salad w/Tuna ($8.25)</option>
         </select><br>
-        <input type="submit" name="submit" value="Add to Order">
       </form>
     </div>
     </div>

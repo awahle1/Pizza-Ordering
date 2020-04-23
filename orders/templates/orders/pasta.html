@@ -7,15 +7,13 @@
     <img src="https://www.onceuponachef.com/images/2017/10/Sausage-Baked-Ziti-1-1200x880.jpg" class="card-img-top" alt="Boopadi Bopadi">
     <div class="card-body">
       <h5 class="card-title">Pasta</h5>
-      <form action="{% url 'orderPasta' %}" method="post">
-        {% csrf_token %}
+      <form>
         <label for="pasta">Choose your pasta:</label>
         <select id="pasta" name="pasta">
           <option value="Baked Ziti w/Mozzarella">Baked Ziti w/Mozzarella ($6.50)</option>
           <option value="Baked Ziti w/Meatballs">Baked Ziti w/Meatballs ($8.75)</option>
           <option value="Baked Ziti w/Chicken">Baked Ziti w/Chicken ($9.75)</option>
         </select><br>
-        <input type="submit" name="submit" value="Add to Order">
       </form>
     </div>
     </div>
