@@ -33,31 +33,31 @@ class Pizza(models.Model):
     topping1= models.CharField(
     max_length = 25,
     choices = TOPPINGS,
-    default='None',
+    default=' ',
     )
 
     topping2= models.CharField(
     max_length = 25,
     choices = TOPPINGS,
-    default='None',
+    default=' ',
     )
 
     topping3= models.CharField(
     max_length = 25,
     choices = TOPPINGS,
-    default='None',
+    default=' ',
     )
 
     topping4= models.CharField(
     max_length = 25,
     choices = TOPPINGS,
-    default='None',
+    default=' ',
     )
 
     topping5= models.CharField(
     max_length = 25,
     choices = TOPPINGS,
-    default='None',
+    default=' ',
     )
 
     size = models.CharField(
@@ -65,6 +65,8 @@ class Pizza(models.Model):
     choices = [('Small', 'Small'), ('Large', 'Large')],
     default = 'Small',
     )
+    def __str__(self):
+        return("{} {} with {}, {}, {}, {}, {}").format(self.size, self.type, self.topping1, self.topping2, self.topping3, self.topping4, self.topping5)
 
 class Sub(models.Model):
     SUBOPTIONS=(
@@ -119,6 +121,8 @@ class Sub(models.Model):
     choices = [('Yes', 'Yes'), ('No', 'No')],
     default='No',
     )
+    def __str__(self):
+        return("{} {} Sub Mushrooms: {}, Green Peppers: {}, Onions: {}, Extra Cheese: {}").format(self.size, self.sub, self.addmushrooms, self.addgreenpeppers, self.addonions, self.extracheese)
 
 class Salad(models.Model):
     SALADOPTIONS = (
@@ -133,6 +137,8 @@ class Salad(models.Model):
     choices=SALADOPTIONS,
     default='Garden Salad',
     )
+    def __str__(self):
+        return("{}").format(self.salad)
 
 class Pasta(models.Model):
     PASTAOPTIONS = (
@@ -146,6 +152,8 @@ class Pasta(models.Model):
     choices=PASTAOPTIONS,
     default='Baked Ziti w/Mozzarella',
     )
+    def __str__(self):
+        return("{}").format(self.pasta)
 
 class DinnerPlatter(models.Model):
     PLATTEROPTIONS = (
@@ -168,3 +176,14 @@ class DinnerPlatter(models.Model):
     choices = [('Small', 'Small'), ('Large', 'Large')],
     default = 'Small',
     )
+    def __str__(self):
+        return("{} {}").format(self.size, self.platter)
+
+class Order(models.Model):
+    pizza = models.ManyToManyField(Pizza, related_name="orders")
+    salads = models.ManyToManyField(Salad, related_name="orders")
+    subs = models.ManyToManyField(Sub, related_name="orders")
+    platters = models.ManyToManyField(DinnerPlatter, related_name="orders")
+    pasta = models.ManyToManyField(Pasta, related_name="orders")
+    def __str__(self):
+        return("Order {}").format(self.id)

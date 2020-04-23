@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from orders.models import Pizza, Sub, Salad, Pasta, DinnerPlatter
 
 # Create your views here.
+currentorder = 0
 
 def index(request):
     if not request.user.is_authenticated:
@@ -119,3 +120,6 @@ def orderPlatter_view(request):
     plat = DinnerPlatter(size=size, platter=platter)
     plat.save()
     return render(request, "orders/pizza.html")
+
+def cart_view(request):
+    return render(request, "orders/cart.html")
