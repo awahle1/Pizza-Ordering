@@ -4,6 +4,10 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.contrib.auth.models import User
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+from orders.models import Pizza
+>>>>>>> parent of 29e7e98... All add to order buttons working
 =======
 from orders.models import Pizza
 >>>>>>> parent of 29e7e98... All add to order buttons working

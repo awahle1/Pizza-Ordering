@@ -22,5 +22,8 @@ urlpatterns = [
 #    path("orderPasta", views.orderPasta_view, name="orderPasta"),
 #    path("orderSalad", views.orderSalad_view, name="orderSalad"),
 #    path("orderPlatter", views.orderPlatter_view, name="orderPlatter"),
+<<<<<<< HEAD
+>>>>>>> parent of 29e7e98... All add to order buttons working
+=======
 >>>>>>> parent of 29e7e98... All add to order buttons working
 ]
