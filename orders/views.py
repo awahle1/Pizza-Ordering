@@ -3,6 +3,10 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 from django.contrib.auth.models import User
+<<<<<<< HEAD
+=======
+from orders.models import Pizza
+>>>>>>> parent of 29e7e98... All add to order buttons working
 
 # Create your views here.
 
@@ -66,3 +70,25 @@ def saladMenu_view(request):
 
 def platterMenu_view(request):
     return render(request, "orders/platters.html")
+<<<<<<< HEAD
+=======
+
+def orderSicilian_view(request):
+    size = request.POST["size"]
+    topping1 = request.POST["topping1"]
+    topping2 = request.POST["topping2"]
+    topping3 = request.POST["topping3"]
+    topping4 = request.POST["topping4"]
+    topping5 = request.POST["topping5"]
+    pizza = Pizza(type="Sicilian", topping1=topping1, topping2=topping2, topping3=topping3, topping4=topping4, topping5=topping5, size=size)
+    pizza.save()
+    return render(request, "orders/pizza.html")
+
+def orderPizza_view(request):
+    size = request.POST["size"]
+    topping1 = request.POST["topping1"]
+    print("---------------------------------------")
+    print(size)
+    print(topping1)
+    return render(request, "orders/pizza.html")
+>>>>>>> parent of 29e7e98... All add to order buttons working
