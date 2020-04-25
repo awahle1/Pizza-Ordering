@@ -2,6 +2,7 @@
 {% block body %}
   <h2>Thanks for ordering from Pinocchio's Pizza & Subs</h2>
   <h3>Order Summary</h3>
+  <h4>Order Number: #{{placeorder.id}}</h4>
   <h4>Total: {{price}}</h4>
   <h4>Items:</h4>
   <ul>
@@ -21,4 +22,5 @@
     <li>{{za}}</li>
     {% endfor %}
   </ul>
+  <a href="{% url 'orderstatus' %}">Check Order Status</a>
 {% endblock %}

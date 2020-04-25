@@ -225,7 +225,16 @@ def place(request):
         "platters": platters,
         "subs": subs,
         "salads": salads,
-        "price": price
+        "price": price,
+        "placeorder": placeorder
     }
     order.delete()
     return render(request, "orders/complete.html", context)
+
+def orderstatus(request):
+    order = CompleteOrder.objects.get(pk=currentorder)
+    print(order.id)
+    context = {
+        'status': order.status
+    }
+    return render(request, "orders/status.html", context)

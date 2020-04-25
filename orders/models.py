@@ -379,29 +379,44 @@ class CompleteOrder(models.Model):
     pizzas = models.CharField(
         max_length=10000,
         default = "",
+        blank=True,
+        null=True
     )
     salads = models.CharField(
         max_length=10000,
         default = "",
+        blank=True,
+        null=True
     )
     pastas = models.CharField(
         max_length=10000,
         default = "",
+        blank=True,
+        null=True
     )
     platters = models.CharField(
         max_length=10000,
         default = "",
+        blank=True,
+        null=True
     )
     subs = models.CharField(
         max_length=10000,
         default = "",
+        blank=True,
+        null=True
     )
     userid = models.IntegerField(
         default = 0
     )
     price = models.CharField(
         max_length = 10,
-        default = "$0"
+        default = "$0",
+    )
+    status = models.CharField(
+        max_length=20,
+        default = "Received",
+        choices = [('Received', 'Received'), ('In Progress', 'In Progress'), ('Complete', 'Complete')]
     )
     def __str__(self):
         return("Order {}").format(self.id)

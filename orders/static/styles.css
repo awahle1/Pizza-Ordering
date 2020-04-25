@@ -1,6 +1,5 @@
 #navbar{
   background-color: red;
-  justify-content: center;
 }
 
 #regpizza{
@@ -14,4 +13,8 @@
 .card-title{
   padding-left: 50px;
   padding-right: 50px;
+}
+
+h3{
+    color: black;
 }

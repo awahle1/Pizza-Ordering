@@ -23,4 +23,6 @@ urlpatterns = [
     path("Yes", views.yes_view, name="Yes"),
     path("No", views.no_view, name="No"),
     path("placeOrder", views.place, name="placeOrder"),
+    path("orderstatus", views.orderstatus, name="orderstatus"),
+
 ]
