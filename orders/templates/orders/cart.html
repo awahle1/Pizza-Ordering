@@ -1,4 +1,23 @@
 {% extends "orders/user.html" %}
 {% block body %}
 <h1>Cart</h1>
+<ul>
+  {% for za in order.pizza.all %}
+  <li>{{za}}</li>
+  {% endfor %}
+  {% for za in order.subs.all %}
+  <li>{{za}}</li>
+  {% endfor %}
+  {% for za in order.pasta.all %}
+  <li>{{za}}</li>
+  {% endfor %}
+  {% for za in order.salads.all %}
+  <li>{{za}}</li>
+  {% endfor %}
+  {% for za in order.platters.all %}
+  <li>{{za}}</li>
+  {% endfor %}
+</ul>
+<h3>Total: {{price}}</h3>
+<a href="{% url 'pizzaMenu' %}">Continue Shopping</a>
 {% endblock %}

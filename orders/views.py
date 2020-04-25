@@ -3,10 +3,10 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 from django.contrib.auth.models import User
-from orders.models import Pizza, Sub, Salad, Pasta, DinnerPlatter
+from orders.models import Pizza, Sub, Salad, Pasta, DinnerPlatter, Order
 
 # Create your views here.
-currentorder = 0
+currentorder = 1
 
 def index(request):
     if not request.user.is_authenticated:
@@ -78,6 +78,8 @@ def orderSicilian_view(request):
     topping5 = request.POST["topping5"]
     pizza = Pizza(type="Sicilian", topping1=topping1, topping2=topping2, topping3=topping3, topping4=topping4, topping5=topping5, size=size)
     pizza.save()
+    order = Order.objects.get(pk=currentorder)
+    order.pizza.add(pizza)
     return render(request, "orders/pizza.html")
 
 def orderPizza_view(request):
@@ -89,7 +91,12 @@ def orderPizza_view(request):
     topping5 = request.POST["topping5"]
     pizza = Pizza(type="Regular", topping1=topping1, topping2=topping2, topping3=topping3, topping4=topping4, topping5=topping5, size=size)
     pizza.save()
-    return render(request, "orders/pizza.html")
+    order = Order.objects.get(pk=currentorder)
+    order.pizza.add(pizza)
+    context = {
+        "order": order
+    }
+    return HttpResponseRedirect(reverse("cart", args=()))
 
 def orderSub_view(request):
     size = request.POST["size"]
@@ -100,26 +107,40 @@ def orderSub_view(request):
     xtracheese = request.POST["xtracheese"]
     sub = Sub(sub=sub, addmushrooms=mushrooms, addgreenpeppers=greenpeppers, addonions=onions, extracheese=xtracheese, size=size)
     sub.save()
-    return render(request, "orders/pizza.html")
+    order = Order.objects.get(pk=currentorder)
+    order.subs.add(sub)
+    return HttpResponseRedirect(reverse("cart", args=()))
 
 def orderPasta_view(request):
     pasta = request.POST["pasta"]
     past = Pasta(pasta=pasta)
     past.save()
-    return render(request, "orders/pizza.html")
+    order = Order.objects.get(pk=currentorder)
+    order.pasta.add(pasta)
+    return HttpResponseRedirect(reverse("cart", args=()))
 
 def orderSalad_view(request):
     salad = request.POST["salad"]
     sal = Salad(salad=salad)
     sal.save()
-    return render(request, "orders/pizza.html")
+    order = Order.objects.get(pk=currentorder)
+    order.salads.add(salad)
+    return HttpResponseRedirect(reverse("cart", args=()))
 
 def orderPlatter_view(request):
     size = request.POST["size"]
     platter = request.POST["platter"]
     plat = DinnerPlatter(size=size, platter=platter)
     plat.save()
-    return render(request, "orders/pizza.html")
+    order = Order.objects.get(pk=currentorder)
+    order.platters.add(platter)
+    return HttpResponseRedirect(reverse("cart", args=()))
 
 def cart_view(request):
-    return render(request, "orders/cart.html")
+    order = Order.objects.get(pk=currentorder)
+    price = order.getprice()
+    context = {
+        "order": order,
+        "price": price
+    }
+    return render(request, "orders/cart.html", context)
