@@ -17,9 +17,11 @@ def index(request):
     }
     global user
     user = request.user
-    if Order.objects.get(userid = user.id) is None:
+    if Order.objects.filter(userid = user.id).count() == 0:
         order = Order(userid = user.id)
         order.save()
+        global currentorder
+        currentorder = order.id
     else:
         return render(request, "orders/choose.html")
     return render(request, "orders/pizza.html", context)
@@ -153,7 +155,6 @@ def orderPlatter_view(request):
     platter = request.POST["platter"]
     plat = DinnerPlatter(size=size, platter=platter)
     plat.save()
-    print("---------------------------------")
     order = Order.objects.get(pk=currentorder)
     order.platters.add(plat)
     return HttpResponseRedirect(reverse("cart", args=()))
@@ -175,6 +176,7 @@ def place(request):
             pizzalist = pizza
         else:
             pizzalist = str(pizzalist) + ", " + str(pizza)
+    print(pizzalist)
     sublist = ""
     for sub in order.subs.all():
         if sublist == "":
@@ -202,8 +204,28 @@ def place(request):
     placeorder = CompleteOrder(pizzas = pizzalist, salads = saladlist, pastas = pastalist, platters = platterlist, subs = sublist, userid=order.userid, price = order.getprice())
     placeorder.save()
     price = order.getprice()
+    pizzas = []
+    for pizza in order.pizza.all():
+        pizzas.append(pizza)
+    subs = []
+    for pizza in order.subs.all():
+        subs.append(pizza)
+    salads = []
+    for pizza in order.salads.all():
+        salads.append(pizza)
+    platters = []
+    for pizza in order.platters.all():
+        platters.append(pizza)
+    pastas = []
+    for pizza in order.pasta.all():
+        pastas.append(pizza)
     context = {
-        "order": order,
+        "pizzas": pizzas,
+        "pastas": pastas,
+        "platters": platters,
+        "subs": subs,
+        "salads": salads,
         "price": price
     }
+    order.delete()
     return render(request, "orders/complete.html", context)

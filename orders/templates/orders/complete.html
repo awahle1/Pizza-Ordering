@@ -5,19 +5,19 @@
   <h4>Total: {{price}}</h4>
   <h4>Items:</h4>
   <ul>
-    {% for za in order.pizza.all %}
+    {% for za in pizzas %}
     <li>{{za}}</li>
     {% endfor %}
-    {% for za in order.subs.all %}
+    {% for za in salads %}
     <li>{{za}}</li>
     {% endfor %}
-    {% for za in order.pasta.all %}
+    {% for za in pastas %}
     <li>{{za}}</li>
     {% endfor %}
-    {% for za in order.salads.all %}
+    {% for za in platters %}
     <li>{{za}}</li>
     {% endfor %}
-    {% for za in order.platters.all %}
+    {% for za in subs %}
     <li>{{za}}</li>
     {% endfor %}
   </ul>
