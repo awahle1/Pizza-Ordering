@@ -22,4 +22,5 @@ urlpatterns = [
     path("cart", views.cart_view, name="cart"),
     path("Yes", views.yes_view, name="Yes"),
     path("No", views.no_view, name="No"),
+    path("placeOrder", views.place, name="placeOrder"),
 ]

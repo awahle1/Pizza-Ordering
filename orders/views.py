@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 from django.contrib.auth.models import User
-from orders.models import Pizza, Sub, Salad, Pasta, DinnerPlatter, Order
+from orders.models import Pizza, Sub, Salad, Pasta, DinnerPlatter, Order, CompleteOrder
 
 # Create your views here.
 currentorder = 0
@@ -15,6 +15,13 @@ def index(request):
     context = {
         "user": request.user
     }
+    global user
+    user = request.user
+    if Order.objects.get(userid = user.id) is None:
+        order = Order(userid = user.id)
+        order.save()
+    else:
+        return render(request, "orders/choose.html")
     return render(request, "orders/pizza.html", context)
 
 def login_view(request):
@@ -24,11 +31,6 @@ def login_view(request):
     user = authenticate(request, username=username, password=password)
     if user is not None:
         login(request, user)
-        if Order.objects.get(userid = user.id) is None:
-            order = Order(userid = user.id)
-            order.save()
-        else:
-            return render(request, "orders/choose.html")
         return HttpResponseRedirect(reverse("index"))
     else:
         return render(request, "orders/login.html", {"message": "Invalid Credentials"})
@@ -99,7 +101,7 @@ def orderSicilian_view(request):
     pizza.save()
     order = Order.objects.get(pk=currentorder)
     order.pizza.add(pizza)
-    return render(request, "orders/pizza.html")
+    return HttpResponseRedirect(reverse("cart", args=()))
 
 def orderPizza_view(request):
     size = request.POST["size"]
@@ -135,7 +137,7 @@ def orderPasta_view(request):
     past = Pasta(pasta=pasta)
     past.save()
     order = Order.objects.get(pk=currentorder)
-    order.pasta.add(pasta)
+    order.pasta.add(past)
     return HttpResponseRedirect(reverse("cart", args=()))
 
 def orderSalad_view(request):
@@ -143,7 +145,7 @@ def orderSalad_view(request):
     sal = Salad(salad=salad)
     sal.save()
     order = Order.objects.get(pk=currentorder)
-    order.salads.add(salad)
+    order.salads.add(sal)
     return HttpResponseRedirect(reverse("cart", args=()))
 
 def orderPlatter_view(request):
@@ -151,8 +153,9 @@ def orderPlatter_view(request):
     platter = request.POST["platter"]
     plat = DinnerPlatter(size=size, platter=platter)
     plat.save()
+    print("---------------------------------")
     order = Order.objects.get(pk=currentorder)
-    order.platters.add(platter)
+    order.platters.add(plat)
     return HttpResponseRedirect(reverse("cart", args=()))
 
 def cart_view(request):
@@ -163,3 +166,44 @@ def cart_view(request):
         "price": price
     }
     return render(request, "orders/cart.html", context)
+
+def place(request):
+    order = Order.objects.get(pk=currentorder)
+    pizzalist = ""
+    for pizza in order.pizza.all():
+        if pizzalist == "":
+            pizzalist = pizza
+        else:
+            pizzalist = str(pizzalist) + ", " + str(pizza)
+    sublist = ""
+    for sub in order.subs.all():
+        if sublist == "":
+            sublist = sub
+        else:
+            sublist = str(sublist) + ", " + str(sub)
+    saladlist = ""
+    for salad in order.salads.all():
+        if saladlist == "":
+            saladlist = salad
+        else:
+            saladlist = str(saladlist) + ", " + str(salad)
+    pastalist = ""
+    for pasta in order.pasta.all():
+        if pastalist == "":
+            pastalist = pasta
+        else:
+            pastalist = str(pastalist) + ", " + str(pasta)
+    platterlist = ""
+    for platter in order.platters.all():
+        if platterlist == "":
+            platterlist = platter
+        else:
+            platterlist = str(platterlist) + ", " + str(platter)
+    placeorder = CompleteOrder(pizzas = pizzalist, salads = saladlist, pastas = pastalist, platters = platterlist, subs = sublist, userid=order.userid, price = order.getprice())
+    placeorder.save()
+    price = order.getprice()
+    context = {
+        "order": order,
+        "price": price
+    }
+    return render(request, "orders/complete.html", context)

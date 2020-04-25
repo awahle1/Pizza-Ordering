@@ -374,3 +374,34 @@ class Order(models.Model):
 
     def __str__(self):
         return("Order {}").format(self.id)
+
+class CompleteOrder(models.Model):
+    pizzas = models.CharField(
+        max_length=10000,
+        default = "",
+    )
+    salads = models.CharField(
+        max_length=10000,
+        default = "",
+    )
+    pastas = models.CharField(
+        max_length=10000,
+        default = "",
+    )
+    platters = models.CharField(
+        max_length=10000,
+        default = "",
+    )
+    subs = models.CharField(
+        max_length=10000,
+        default = "",
+    )
+    userid = models.IntegerField(
+        default = 0
+    )
+    price = models.CharField(
+        max_length = 10,
+        default = "$0"
+    )
+    def __str__(self):
+        return("Order {}").format(self.id)

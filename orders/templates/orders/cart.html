@@ -19,5 +19,6 @@
   {% endfor %}
 </ul>
 <h3>Total: {{price}}</h3>
+<a href="{% url 'placeOrder' %}">Place Order</a>
 <a href="{% url 'pizzaMenu' %}">Continue Shopping</a>
 {% endblock %}

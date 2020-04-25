@@ -1,0 +1,24 @@
+{% extends "orders/base.html" %}
+{% block body %}
+  <h2>Thanks for ordering from Pinocchio's Pizza & Subs</h2>
+  <h3>Order Summary</h3>
+  <h4>Total: {{price}}</h4>
+  <h4>Items:</h4>
+  <ul>
+    {% for za in order.pizza.all %}
+    <li>{{za}}</li>
+    {% endfor %}
+    {% for za in order.subs.all %}
+    <li>{{za}}</li>
+    {% endfor %}
+    {% for za in order.pasta.all %}
+    <li>{{za}}</li>
+    {% endfor %}
+    {% for za in order.salads.all %}
+    <li>{{za}}</li>
+    {% endfor %}
+    {% for za in order.platters.all %}
+    <li>{{za}}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
