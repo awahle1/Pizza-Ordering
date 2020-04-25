@@ -6,7 +6,8 @@ from django.contrib.auth.models import User
 from orders.models import Pizza, Sub, Salad, Pasta, DinnerPlatter, Order
 
 # Create your views here.
-currentorder = 1
+currentorder = 0
+user = None
 
 def index(request):
     if not request.user.is_authenticated:
@@ -19,12 +20,30 @@ def index(request):
 def login_view(request):
     username = request.POST["username"]
     password = request.POST["password"]
+    global user
     user = authenticate(request, username=username, password=password)
     if user is not None:
         login(request, user)
+        if Order.objects.get(userid = user.id) is None:
+            order = Order(userid = user.id)
+            order.save()
+        else:
+            return render(request, "orders/choose.html")
         return HttpResponseRedirect(reverse("index"))
     else:
         return render(request, "orders/login.html", {"message": "Invalid Credentials"})
+
+def yes_view(request):
+    global currentorder
+    currentorder = Order.objects.get(userid = user.id).id
+    return render(request, "orders/pizza.html")
+
+def no_view(request):
+    order = Order(userid = user.id)
+    order.save()
+    global currentorder
+    currentorder = order.id
+    return render(request, "orders/pizza.html")
 
 def logout_view(request):
     logout(request)

@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Pizza(models.Model):
@@ -127,7 +128,29 @@ class Pizza(models.Model):
                     price = 45.70
         return(price)
     def __str__(self):
-        return("{} {} with {}, {}, {}, {}, {}").format(self.size, self.type, self.topping1, self.topping2, self.topping3, self.topping4, self.topping5)
+        numtoppings = 0
+        if self.topping1 != " ":
+            numtoppings += 1
+        if self.topping2 != " ":
+            numtoppings += 1
+        if self.topping3 != " ":
+            numtoppings += 1
+        if self.topping4 != " ":
+            numtoppings += 1
+        if self.topping5 != " ":
+            numtoppings += 1
+        if numtoppings == 5:
+            return str("{} {} Pizza with {}, {}, {}, {}, and {}").format(self.size, self.type, self.topping1, self.topping2, self.topping3, self.topping4, self.topping5)
+        if numtoppings == 4:
+            return str("{} {} Pizza with {}, {}, {}, and {}").format(self.size, self.type, self.topping1, self.topping2, self.topping3, self.topping4)
+        if numtoppings == 3:
+            return str("{} {} Pizza with {}, {}, and {}").format(self.size, self.type, self.topping1, self.topping2, self.topping3)
+        if numtoppings == 2:
+            return str("{} {} Pizza with {}, and {}").format(self.size, self.type, self.topping1, self.topping2)
+        if numtoppings == 1:
+            return str("{} {} Pizza with {}").format(self.size, self.type, self.topping1)
+        if numtoppings == 0:
+            return str("{} {} Cheese Pizza").format(self.size, self.type)
 
 class Sub(models.Model):
     SUBOPTIONS=(
@@ -219,7 +242,18 @@ class Sub(models.Model):
             price += 0.50
         return(price)
     def __str__(self):
-        return("{} {} Sub Mushrooms: {}, Green Peppers: {}, Onions: {}, Extra Cheese: {}").format(self.size, self.sub, self.addmushrooms, self.addgreenpeppers, self.addonions, self.extracheese)
+        substr = str("{} {} Sub".format(self.size, self.sub))
+        if self.addmushrooms == "Yes" or self.addonions == "Yes" or self.addgreenpeppers == "Yes" or self.extracheese == "Yes":
+            substr = substr + " with "
+        if self.addmushrooms == "Yes":
+            substr = substr + "mushrooms "
+        if self.addonions == "Yes":
+            substr = substr + "onions "
+        if self.addgreenpeppers == "Yes":
+            substr = substr + "green peppers "
+        if self.extracheese == "Yes":
+            substr = substr + "extra cheese"
+        return substr
 
 class Salad(models.Model):
     SALADOPTIONS = (
@@ -315,6 +349,9 @@ class Order(models.Model):
     subs = models.ManyToManyField(Sub, related_name="subs")
     platters = models.ManyToManyField(DinnerPlatter, related_name="platters")
     pasta = models.ManyToManyField(Pasta, related_name="pastas")
+    userid = models.IntegerField(
+        default = 0
+    )
 
     def getprice(self):
         pizzaprice = 0
