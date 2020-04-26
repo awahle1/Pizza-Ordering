@@ -34,31 +34,31 @@ class Pizza(models.Model):
     topping1= models.CharField(
     max_length = 25,
     choices = TOPPINGS,
-    default=' ',
+    default='None',
     )
 
     topping2= models.CharField(
     max_length = 25,
     choices = TOPPINGS,
-    default=' ',
+    default='None',
     )
 
     topping3= models.CharField(
     max_length = 25,
     choices = TOPPINGS,
-    default=' ',
+    default='None',
     )
 
     topping4= models.CharField(
     max_length = 25,
     choices = TOPPINGS,
-    default=' ',
+    default='None',
     )
 
     topping5= models.CharField(
     max_length = 25,
     choices = TOPPINGS,
-    default=' ',
+    default='None',
     )
 
     size = models.CharField(

@@ -169,6 +169,7 @@ def cart_view(request):
     return render(request, "orders/cart.html", context)
 
 def place(request):
+    global currentorder
     order = Order.objects.get(pk=currentorder)
     pizzalist = ""
     for pizza in order.pizza.all():
@@ -176,7 +177,6 @@ def place(request):
             pizzalist = pizza
         else:
             pizzalist = str(pizzalist) + ", " + str(pizza)
-    print(pizzalist)
     sublist = ""
     for sub in order.subs.all():
         if sublist == "":
@@ -203,6 +203,7 @@ def place(request):
             platterlist = str(platterlist) + ", " + str(platter)
     placeorder = CompleteOrder(pizzas = pizzalist, salads = saladlist, pastas = pastalist, platters = platterlist, subs = sublist, userid=order.userid, price = order.getprice())
     placeorder.save()
+    currentorder = placeorder.id
     price = order.getprice()
     pizzas = []
     for pizza in order.pizza.all():
@@ -233,7 +234,6 @@ def place(request):
 
 def orderstatus(request):
     order = CompleteOrder.objects.get(pk=currentorder)
-    print(order.id)
     context = {
         'status': order.status
     }
