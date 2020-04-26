@@ -1,24 +1,33 @@
 {% extends "orders/user.html" %}
 {% block body %}
-<h1>Cart</h1>
-<ul>
-  {% for za in order.pizza.all %}
-  <li>{{za}}</li>
-  {% endfor %}
-  {% for za in order.subs.all %}
-  <li>{{za}}</li>
-  {% endfor %}
-  {% for za in order.pasta.all %}
-  <li>{{za}}</li>
-  {% endfor %}
-  {% for za in order.salads.all %}
-  <li>{{za}}</li>
-  {% endfor %}
-  {% for za in order.platters.all %}
-  <li>{{za}}</li>
-  {% endfor %}
-</ul>
-<h3>Total: {{price}}</h3>
-<a href="{% url 'placeOrder' %}">Place Order</a>
-<a href="{% url 'pizzaMenu' %}">Continue Shopping</a>
+<div class="cartdiv">
+  <h1 id="cart">Cart</h1>
+</div>
+<div class="items">
+  <h2>Items</h2>
+  <ul>
+    {% for za in order.pizza.all %}
+    <li>{{za}}</li>
+    {% endfor %}
+    {% for za in order.subs.all %}
+    <li>{{za}}</li>
+    {% endfor %}
+    {% for za in order.pasta.all %}
+    <li>{{za}}</li>
+    {% endfor %}
+    {% for za in order.salads.all %}
+    <li>{{za}}</li>
+    {% endfor %}
+    {% for za in order.platters.all %}
+    <li>{{za}}</li>
+    {% endfor %}
+  </ul>
+  <h4>Total: {{price}}</h4>
+</div>
+<div class="bottom">
+  <h4><a href="{% url 'placeOrder' %}">Place Order</a></h4>
+  <h4><a href="{% url 'pizzaMenu' %}">Continue Shopping</a></h4>
+</div>
+
+
 {% endblock %}

@@ -1,6 +1,10 @@
 {% extends "orders/base.html" %}
 {% block body %}
-    <form class="signup" action="{% url 'signUp' %}" method="post">
+<div class="logindiv">
+<h1>Sign Up</h1>
+</div>
+
+    <form class="signup" action="{% url 'signUp' %}" method="post" id = "loginform">
       {% csrf_token %}
       <label>Username</label>
       <input type="text" name="username"><br>

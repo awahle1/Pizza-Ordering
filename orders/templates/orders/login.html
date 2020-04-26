@@ -1,17 +1,23 @@
 {% extends "orders/base.html" %}
 
 {% block body %}
-<h1>Login</h1>
-{% if message %}
-    <div>
-        {{ message }}
-    </div>
-{% endif %}
-<form action="{% url 'login' %}" method="post">
-    {% csrf_token %}
-    <input name="username" type="text"/>
-    <input name="password" type="password"/>
-    <input type="submit" value="Login"/>
-</form>
-<a href="{% url 'toSignUp' %}">Not signed up? Click here</a>
+<div class="logindiv">
+  <h1 id="login">Login</h1>
+</div>
+
+<div class="therest">
+  {% if message %}
+      <div>
+          <h3 id = "loginform">{{ message }}</h3>
+      </div>
+  {% endif %}
+  <form action="{% url 'login' %}" method="post" id = "loginform">
+      {% csrf_token %}
+      <input name="username" type="text"/>
+      <input name="password" type="password"/>
+      <input type="submit" value="Login"/>
+  </form>
+  <a id = "loginform" href="{% url 'toSignUp' %}">Not signed up? Click here</a>
+</div>
+
 {% endblock %}
